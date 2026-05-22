@@ -23,6 +23,10 @@ acting as a full reference/template for a copy-paste approach instead of sourcin
 
 Have a look at the [example](./example) and [example-inline](./example-inline) for usage and docs.
 
+## Bashew
+
+Special mention https://github.com/pforret/bashew .
+
 ## License
 
 [MIT](LICENSE)
