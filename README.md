@@ -1,6 +1,6 @@
 # sane.bash
 
-For the future you to keep on enjoying GNU Bash.
+For the future "you" 🫵 to keep on enjoying GNU Bash.
 
 For many decades now,
 we've had [an unofficial Bash strict mode](http://redsymbol.net/articles/unofficial-bash-strict-mode/)
