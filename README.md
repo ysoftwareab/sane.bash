@@ -25,9 +25,18 @@ acting as a full reference/template for a copy-paste approach instead of sourcin
 
 Have a look at the [example](./example) and [example-inline](./example-inline) for usage and docs.
 
-## Bashew
+## bash mentions
 
-Special mention https://github.com/pforret/bashew .
+* https://github.com/alexanderepstein/Bash-Snippets
+* https://github.com/Bash-it/bash-it
+* https://github.com/basherpm/basher
+* https://github.com/bats-core/bats-core
+* https://github.com/koalaman/shellcheck
+* https://github.com/mvdan/sh
+* https://github.com/pforret/bashew
+* Misc
+  * https://github.com/topics/bash
+  * https://www.reddit.com/r/bash/comments/z09oiu/comment/ix642tx/
 
 ## License
 
