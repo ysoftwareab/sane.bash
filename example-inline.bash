@@ -19,24 +19,24 @@ exe false           # this should fail and be trapped
 # EXAMPLE SCRIPT OUTPUT
 # editorconfig-checker-disable max-line-length
 
-# ## `./example`
+# ## `./example-inline.bash`
 
 # ```text
 # /Users/andrei/git/andreineculau/sane.bash$ false || true
 # /Users/andrei/git/andreineculau/sane.bash$ false
 
-# bash: *** [./example-inline:8 exe] Error 1
-# bash: *** [./example-inline:19 main]
+# bash: *** [./example-inline.bash:8 exe] Error 1
+# bash: *** [./example-inline.bash:19 main]
 # ```
 
-# ## `./example` when interrupting with `CTRL-C`
+# ## `./example-inline.bash` when interrupting with `CTRL-C`
 
 # ```text
 # /Users/andrei/git/andreineculau/sane.bash$ false || true
 # ^C
 # ```
 
-# ## `SHELLOPTS=xtrace ./example` or `V=1 ./example`
+# ## `SHELLOPTS=xtrace ./example-inline.bash` or `V=1 ./example-inline.bash`
 
 # ```text
 # + set -eEuo pipefail
@@ -44,27 +44,27 @@ exe false           # this should fail and be trapped
 # + shopt -s inherit_errexit
 # + export 'PS4=+(${BASH_SOURCE[0]}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 # + PS4='+(${BASH_SOURCE[0]}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
-# +(./example-inline:6): trap 'e=$?; set +x; s() { local i=0; while caller $i; do ((++i)); done | while read l f p; do echo "bash: *** [$p:$l $f]${e:+ Error }$e"; e=""; done; }; >&2 echo; >&2 s' ERR
-# +(./example-inline:9): '[' -z '' ']'
-# +(./example-inline:15): exe 'false || true'
-# ++(./example-inline:8): exe(): pwd
-# +(./example-inline:8): exe(): eval '>&2 echo "/Users/andrei/git/andreineculau/sane.bash$ false || true"; false || true'
-# ++(./example-inline:8): exe(): echo '/Users/andrei/git/andreineculau/sane.bash$ false || true'
+# +(./example-inline.bash:6): trap 'e=$?; set +x; s() { local i=0; while caller $i; do ((++i)); done | while read l f p; do echo "bash: *** [$p:$l $f]${e:+ Error }$e"; e=""; done; }; >&2 echo; >&2 s' ERR
+# +(./example-inline.bash:9): '[' -z '' ']'
+# +(./example-inline.bash:15): exe 'false || true'
+# ++(./example-inline.bash:8): exe(): pwd
+# +(./example-inline.bash:8): exe(): eval '>&2 echo "/Users/andrei/git/andreineculau/sane.bash$ false || true"; false || true'
+# ++(./example-inline.bash:8): exe(): echo '/Users/andrei/git/andreineculau/sane.bash$ false || true'
 # /Users/andrei/git/andreineculau/sane.bash$ false || true
-# ++(./example-inline:8): exe(): false
-# ++(./example-inline:8): exe(): true
-# +(./example-inline:16): false
-# +(./example-inline:16): true
-# +(./example-inline:18): sleep 5
-# +(./example-inline:19): exe false
-# ++(./example-inline:8): exe(): pwd
-# +(./example-inline:8): exe(): eval '>&2 echo "/Users/andrei/git/andreineculau/sane.bash$ false"; false'
-# ++(./example-inline:8): exe(): echo '/Users/andrei/git/andreineculau/sane.bash$ false'
+# ++(./example-inline.bash:8): exe(): false
+# ++(./example-inline.bash:8): exe(): true
+# +(./example-inline.bash:16): false
+# +(./example-inline.bash:16): true
+# +(./example-inline.bash:18): sleep 5
+# +(./example-inline.bash:19): exe false
+# ++(./example-inline.bash:8): exe(): pwd
+# +(./example-inline.bash:8): exe(): eval '>&2 echo "/Users/andrei/git/andreineculau/sane.bash$ false"; false'
+# ++(./example-inline.bash:8): exe(): echo '/Users/andrei/git/andreineculau/sane.bash$ false'
 # /Users/andrei/git/andreineculau/sane.bash$ false
-# ++(./example-inline:8): exe(): false
-# +++(./example-inline:8): exe(): e=1
-# +++(./example-inline:8): exe(): set +x
+# ++(./example-inline.bash:8): exe(): false
+# +++(./example-inline.bash:8): exe(): e=1
+# +++(./example-inline.bash:8): exe(): set +x
 
-# bash: *** [./example-inline:8 exe] Error 1
-# bash: *** [./example-inline:19 main]
+# bash: *** [./example-inline.bash:8 exe] Error 1
+# bash: *** [./example-inline.bash:19 main]
 # ```

@@ -18,27 +18,27 @@ exe false           # this should fail and be trapped
 # EXAMPLE SCRIPT OUTPUT
 # editorconfig-checker-disable max-line-length
 
-# ## `./example`
+# ## `./example.bash`
 
 # ```text
 # /Users/andrei/git/andreineculau/sane.bash$ false || true
 # /Users/andrei/git/andreineculau/sane.bash$ false
 
 # bash: *** [/Users/andrei/git/andreineculau/sane.bash/sane.bash:22 exe] Error 1
-# bash: *** [./example:12 main]
+# bash: *** [./example.bash:12 main]
 # ```
 
-# ## `./example` when interrupting with `CTRL-C`
+# ## `./example.bash` when interrupting with `CTRL-C`
 
 # ```text
 # /Users/andrei/git/andreineculau/sane.bash$ false || true
 # ^C
 # ```
 
-# ## `SHELLOPTS=xtrace ./example` or `V=1 ./example`
+# ## `SHELLOPTS=xtrace ./example.bash` or `V=1 ./example.bash`
 
 # ```text
-# +++ dirname ./example
+# +++ dirname ./example.bash
 # ++ cd .
 # ++ pwd
 # + DIR=/Users/andrei/git/andreineculau/sane.bash
@@ -55,17 +55,17 @@ exe false           # this should fail and be trapped
 # ++(/Users/andrei/git/andreineculau/sane.bash/sane.bash:18): trap 'e=$?; set +x; s() { local i=0; while caller $i; do ((++i)); done | while read l f p; do echo "bash: *** [$p:$l $f]${e:+ Error }$e"; e=""; done; }; >&2 echo; >&2 s' ERR
 # ++(/Users/andrei/git/andreineculau/sane.bash/sane.bash:22): export -f exe
 # ++(/Users/andrei/git/andreineculau/sane.bash/sane.bash:25): '[' -z '' ']'
-# +(./example:8): exe 'false || true'
+# +(./example.bash:8): exe 'false || true'
 # ++(/Users/andrei/git/andreineculau/sane.bash/sane.bash:22): exe(): pwd
 # +(/Users/andrei/git/andreineculau/sane.bash/sane.bash:22): exe(): eval '>&2 echo "/Users/andrei/git/andreineculau/sane.bash$ false || true"; false || true'
 # ++(/Users/andrei/git/andreineculau/sane.bash/sane.bash:22): exe(): echo '/Users/andrei/git/andreineculau/sane.bash$ false || true'
 # /Users/andrei/git/andreineculau/sane.bash$ false || true
 # ++(/Users/andrei/git/andreineculau/sane.bash/sane.bash:22): exe(): false
 # ++(/Users/andrei/git/andreineculau/sane.bash/sane.bash:22): exe(): true
-# +(./example:9): false
-# +(./example:9): true
-# +(./example:11): sleep 5
-# +(./example:12): exe false
+# +(./example.bash:9): false
+# +(./example.bash:9): true
+# +(./example.bash:11): sleep 5
+# +(./example.bash:12): exe false
 # ++(/Users/andrei/git/andreineculau/sane.bash/sane.bash:22): exe(): pwd
 # +(/Users/andrei/git/andreineculau/sane.bash/sane.bash:22): exe(): eval '>&2 echo "/Users/andrei/git/andreineculau/sane.bash$ false"; false'
 # ++(/Users/andrei/git/andreineculau/sane.bash/sane.bash:22): exe(): echo '/Users/andrei/git/andreineculau/sane.bash$ false'
