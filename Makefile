@@ -6,6 +6,6 @@ MARKDOWNLINT ?= $(shell command -v markdownlint)
 .PHONY: check
 check:
 	$(EDITORCONFIG_CHECKER)
-	$(MARKDOWNLINT) -c .markdownlint.json *.md
-	$(SHELLCHECK) example* *.bash
-	$(SHFMT) -w example* *.bash
+	$(MARKDOWNLINT) -c .markdownlint.jsonc *.md
+	$(SHELLCHECK) *.bash
+	$(SHFMT) -w *.bash
