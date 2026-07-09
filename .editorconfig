@@ -10,17 +10,35 @@ max_line_length = 120
 tab_width = 2
 trim_trailing_whitespace = true
 
-[Makefile]
-indent_style = tab
+[*.bats]
+indent_size = 4
 
-[README.md]
+[*.csv]
 max_line_length = unset
 
-[example*]
-indent_size = 4
-
-[*.bash]
-indent_size = 4
+[*.json]
+max_line_length = unset
 
 [*.md]
+max_line_length = unset
+
+[*.mk]
+indent_style = tab
+
+[*.py]
+indent_size = 4
+
+[*.sh]
+indent_size = 4
+
+[.gitmodules]
+indent_style = unset
+
+[.mailmap]
+max_line_length = unset
+
+[Makefile*]
+indent_style = tab
+
+[package.json]
 max_line_length = unset
