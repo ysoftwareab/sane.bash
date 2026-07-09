@@ -33,20 +33,20 @@ or inline it. No runtime, no imports beyond the shell itself.
 Apply this skill whenever you are about to **generate or harden a Bash script**
 that should be safe and diagnosable in production:
 
-* A new CLI script, wrapper, or automation task in `#!/usr/bin/env bash`.
-* A CI/CD bash step or a `make` recipe that deserves strict mode + a stack trace.
-* Hardening an existing script that uses `set -e` alone or nothing at all.
-* A user asks for a "safe bash script", "sane bash script", "strict-mode bash",
+*   A new CLI script, wrapper, or automation task in `#!/usr/bin/env bash`.
+*   A CI/CD bash step or a `make` recipe that deserves strict mode + a stack trace.
+*   Hardening an existing script that uses `set -e` alone or nothing at all.
+*   A user asks for a "safe bash script", "sane bash script", "strict-mode bash",
   "robust shell script", "bash boilerplate", or "fail-fast bash".
-* You see `set -euo pipefail` and want to upgrade it to the full sane.bash form.
+*   You see `set -euo pipefail` and want to upgrade it to the full sane.bash form.
 
 ## When NOT to use
 
-* **POSIX `sh`** / `dash` / `ash` — the header uses Bash 4.4+ features
+*   **POSIX `sh`** / `dash` / `ash` — the header uses Bash 4.4+ features
   (`inherit_errexit`, `BASH_SOURCE`, `FUNCNAME`, `caller`). Use plain POSIX
   strict mode instead.
-* **Non-Bash shells** (zsh, fish, ksh) — the trap and `shopt` are Bash-specific.
-* **Sourced libraries that must stay side-effect-free** — the header sets
+*   **Non-Bash shells** (zsh, fish, ksh) — the trap and `shopt` are Bash-specific.
+*   **Sourced libraries that must stay side-effect-free** — the header sets
   shell options and traps globally; prefer the inline form only at the top of an
   executable entry script, not in a library that others `source`.
 
@@ -130,17 +130,17 @@ exe rm -rf -- "$tmp"    # logs the exact command before doing something destruct
 
 Rules:
 
-* Pass the command as **separate arguments** (`exe make build`), not as one
+*   Pass the command as **separate arguments** (`exe make build`), not as one
   quoted string. `exe` runs `"$@"`, so a single string like `exe "a || b"` would
   try to execute a binary literally named `a || b`.
-* To **tolerate a non-zero exit**, don't wrap the whole thing in `exe` as a
+*   To **tolerate a non-zero exit**, don't wrap the whole thing in `exe` as a
   string. Use the plain short-circuit form instead:
 
   ```bash
   grep -q needle haystack || true   # allowed to "fail", no trap fires
   ```
 
-* `exe` itself is exported (`export -f exe`) so it works inside command
+*   `exe` itself is exported (`export -f exe`) so it works inside command
   substitutions and subshells.
 
 ## Opt-in tracing
@@ -161,7 +161,7 @@ when tracing was on.
 For a real CLI, model your script on [`reference-sane.bash`](./reference-sane.bash).
 It adds, **after** the canonical header:
 
-1. **A version line** starting with `#-` and **usage/help lines** starting with
+1.  **A version line** starting with `#-` and **usage/help lines** starting with
     `##`. Help/version are printed by grepping these comments out of the script
     itself — no duplicated usage string:
 
@@ -177,7 +177,7 @@ It adds, **after** the canonical header:
     Printed via `grep "^##" "${0}" | cut -c 4-` (help) and
     `grep "^#-" "${0}" | cut -c 4-` (version).
 
-2. **An `on_exit` cleanup trap**:
+2.  **An `on_exit` cleanup trap**:
 
     ```bash
     function on_exit() {
@@ -186,7 +186,7 @@ It adds, **after** the canonical header:
     trap on_exit EXIT
     ```
 
-3. **`getopt`-based parsing** with `-h/--help` and `-v/--version`, falling back
+3.  **`getopt`-based parsing** with `-h/--help` and `-v/--version`, falling back
     to printing help on bad input, and a `while [[ $# -gt 0 ]]` loop over the
     remaining positional args. Copy the parsing block verbatim from
     `reference-sane.bash` rather than reinventing it.
@@ -198,16 +198,16 @@ When generating a new CLI, start from `reference-sane.bash` and edit the
 
 When asked to produce a "safe/sane bash script", follow this order:
 
-1. **Shebang**: `#!/usr/bin/env bash` (never `#!/bin/bash` — portability).
-2. **Header**: paste the eight-line canonical header verbatim (inline form), or
+1.  **Shebang**: `#!/usr/bin/env bash` (never `#!/bin/bash` — portability).
+2.  **Header**: paste the eight-line canonical header verbatim (inline form), or
     the source block if `sane.bash` is vendored alongside.
-3. **Args**: if the script takes options, copy the `getopt` + `##`/`#-` help
+3.  **Args**: if the script takes options, copy the `getopt` + `##`/`#-` help
     skeleton from `reference-sane.bash` and adapt the usage text.
-4. **Cleanup**: add `on_exit` + `trap on_exit EXIT` if resources need releasing.
-5. **Logging**: wrap the few commands worth seeing in `exe`; leave the rest bare.
-6. **Expected failures**: use `cmd || true` / `cmd || exit 0` — never quote a
+4.  **Cleanup**: add `on_exit` + `trap on_exit EXIT` if resources need releasing.
+5.  **Logging**: wrap the few commands worth seeing in `exe`; leave the rest bare.
+6.  **Expected failures**: use `cmd || true` / `cmd || exit 0` — never quote a
     compound into `exe`.
-7. **Validate**: in this repo run `make check`; elsewhere run
+7.  **Validate**: in this repo run `make check`; elsewhere run
     `shellcheck your-script` and `shfmt -d your-script` (the same tools the
     repo's `make check` uses).
 
@@ -215,21 +215,21 @@ When asked to produce a "safe/sane bash script", follow this order:
 
 If you are editing files inside `sane.bash` itself:
 
-* **Validate via `make`, never invoke linters directly.** The repo's
+*   **Validate via `make`, never invoke linters directly.** The repo's
   [`Makefile`](./Makefile) wires editorconfig-checker, markdownlint, shellcheck,
   and shfmt into a single entrypoint:
-  * `make check` — lint + format (this is the gate; run it after any edit).
-  * `make test` — tests.
-  * `make all` — build.
-  * `make clean` — remove generated files.
-* **File map** (all four `*.bash` files are the same code in different shapes):
-  * [`sane.bash`](./sane.bash) — the file you `source`.
-  * [`docs-sane.bash`](./docs-sane.bash) — same code, inline-documented.
-  * [`reference-sane.bash`](./reference-sane.bash) — same code + arg parsing, the
+    *   `make check` — lint + format (this is the gate; run it after any edit).
+    *   `make test` — tests.
+    *   `make all` — build.
+    *   `make clean` — remove generated files.
+*   **File map** (all four `*.bash` files are the same code in different shapes):
+    *   [`sane.bash`](./sane.bash) — the file you `source`.
+    *   [`docs-sane.bash`](./docs-sane.bash) — same code, inline-documented.
+    *   [`reference-sane.bash`](./reference-sane.bash) — same code + arg parsing, the
     copy-paste CLI template.
-  * [`example`](./example) / [`example-inline`](./example-inline) — usage demos
+    *   [`example`](./example) / [`example-inline`](./example-inline) — usage demos
     for the source and inline forms respectively.
-* Keep the four `.bash` files in sync: a change to the header belongs in all of
+*   Keep the four `.bash` files in sync: a change to the header belongs in all of
   them. The header lines must stay byte-identical (including the
   `# editorconfig-checker-disable-line` and `# shellcheck disable=SC2154`
   comments).

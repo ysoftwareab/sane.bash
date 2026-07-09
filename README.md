@@ -27,16 +27,16 @@ Have a look at the [example](./example) and [example-inline](./example-inline) f
 
 ## bash mentions
 
-* https://github.com/alexanderepstein/Bash-Snippets
-* https://github.com/Bash-it/bash-it
-* https://github.com/basherpm/basher
-* https://github.com/bats-core/bats-core
-* https://github.com/koalaman/shellcheck
-* https://github.com/mvdan/sh
-* https://github.com/pforret/bashew
-* Misc
-  * https://github.com/topics/bash
-  * https://www.reddit.com/r/bash/comments/z09oiu/comment/ix642tx/
+*   https://github.com/alexanderepstein/Bash-Snippets
+*   https://github.com/Bash-it/bash-it
+*   https://github.com/basherpm/basher
+*   https://github.com/bats-core/bats-core
+*   https://github.com/koalaman/shellcheck
+*   https://github.com/mvdan/sh
+*   https://github.com/pforret/bashew
+*   Misc
+    *   https://github.com/topics/bash
+    *   https://www.reddit.com/r/bash/comments/z09oiu/comment/ix642tx/
 
 ## License
 
