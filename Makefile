@@ -8,4 +8,4 @@ check:
 	$(EDITORCONFIG_CHECKER)
 	$(MARKDOWNLINT) -c .markdownlint.jsonc *.md
 	$(SHELLCHECK) *.bash
-	$(SHFMT) -w *.bash
+	$(SHFMT) --indent 4 --binary-next-line --case-indent --write *.bash
