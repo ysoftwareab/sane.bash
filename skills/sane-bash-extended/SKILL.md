@@ -52,6 +52,9 @@ extended skill must be ignored entirely (no partial application).
     *   Handle `--` explicitly and reject unexpected extra args.
 1.  Keep help/version text in script comments and print from source
     (`##` for help, `#-` for version) to avoid duplicate strings.
+    *   Order the `#-` version line before the `##` usage lines.
+        `#- name 1.0` on its own line, then the `## Usage:` block below it.
+        Keeps version discoverable above help text.
 1.  Keep an explicit `on_exit` handler (`function on_exit() { ... }`) and
     attach `trap on_exit EXIT` early — before any resource allocation — so
     cleanup actually fires if a later step fails. Start as a no-op and grow it
@@ -89,6 +92,47 @@ extended skill must be ignored entirely (no partial application).
 
     *   `foo` is defined before `bar` calls it; `bar` is defined before the
         top-level invocation. Avoid hoisting reliance and forward references.
+1.  Bootstrap the script's own directory once at the top.
+    *   `SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)"`
+    *   Reference sibling scripts and libraries via `"${SCRIPT_DIR}/..."`, not
+        via bare names or `${0}`. Hardens against being invoked from a
+        different working directory and against `${0}` not being a path.
+    *   For a `bin/` script resolving its repo root, append `/..`:
+        `... "${BASH_SOURCE[0]}")/.." ...`.
+1.  Mark true constants with `readonly`.
+    *   `readonly VERSION='1.0'`, `readonly URI_REGEX='^...'`.
+    *   Catches accidental reassignment of values that must never change.
+1.  Accumulate command-argument lists in arrays.
+    *   `ARGS=()`; append with `ARGS+=("$1")`; expand with `"${ARGS[@]}"`.
+    *   Avoids the word-splitting and quoting bugs that string concatenation
+        (`P="$P '$param'"`) introduces.
+1.  Check tool availability with `command -v`, never `which`.
+    *   `command -v nc >/dev/null` — POSIX builtin, correct exit code, no
+        external dependency.
+1.  Model boolean flags as `true`/`false` strings.
+    *   `FLAG=false`; test with `[[ "${FLAG}" == "true" ]]`.
+    *   Avoids the `0`/`1`/`yes`/`no` ambiguity.
+1.  Redirect to stderr with the redirect first.
+    *   `>&2 echo "msg"`, `>&2 printf '%s\n' "msg"` — redirect before the
+        command.
+    *   Matches the canonical `sane.bash` header's own trap; reads as "to
+        stderr: print".
+1.  Default-then-override with `${VAR:-...}` fallback chains.
+    *   Declare empty, then cascade fallbacks top-to-bottom:
+
+        ```bash
+        ANY_PYTHON=
+        ANY_PYTHON=${ANY_PYTHON:-$(command -v python3 2>/dev/null || true)}
+        ANY_PYTHON=${ANY_PYTHON:-$(command -v python2 2>/dev/null || true)}
+        ```
+
+    *   Reads as a fallback ladder; each line only sets the value if still
+        empty.
+1.  Silence `SC1091` explicitly before `source` of a computed path.
+    *   `# shellcheck disable=SC1091` on the line above
+        `source "${SCRIPT_DIR}/lib.inc.sh"`.
+    *   Tells ShellCheck you've accepted it can't follow a non-constant source
+        path.
 
 ## Formatting rules
 
