@@ -11,7 +11,7 @@
 
 # EXAMPLE SCRIPT
 
-exe "false || true" # allow non-zero exists
+exe false || true   # allow non-zero exits
 false || true       # allow non-zero exists (but no stdout output)
 sleep 5             # try pressing CTRL-C
 exe false           # this should fail and be trapped
