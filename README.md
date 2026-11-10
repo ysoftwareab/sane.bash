@@ -12,18 +12,19 @@ essentially `set -euo pipefail`.
 Except GNU Bash evolved - `errtrace` `functrace` `inherit_errexit`
 and then there's one last thing (tm): `stack trace on failure`.
 
-[sane.bash](./sane.bash) wraps all that up in a script to import (source)
+[sane.bash](./skills/sane-bash/sane.bash) wraps all that up in a script to import (source)
 or simply copy-paste since [a little copying is better than a little dependency](https://go-proverbs.github.io) .
 
-[docs-sane.bash](./docs-sane.bahs) is the same code but with inline documentation.
+[docs-sane.bash](./skills/sane-bash/docs-sane.bash) is the same code but with inline documentation.
 
-[reference-sane.bash](./reference-sane.bash) is the same code,
+[reference-sane.bash](./skills/sane-bash/reference-sane.bash) is the same code,
 minus the documentation, compact, adding argument parsing,\
 acting as a full reference/template for a copy-paste approach instead of sourcing.
 
 ## Usage
 
-Have a look at the [example](./example) and [example-inline](./example-inline) for usage and docs.
+Have a look at the [example.bash](./skills/sane-bash/example.bash)
+and [example-inline.bash](./skills/sane-bash/example-inline.bash) for usage and docs.
 
 ## bash mentions
 

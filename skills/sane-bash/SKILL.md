@@ -53,7 +53,7 @@ that should be safe and diagnosable in production:
 ## The canonical header (copy-paste this)
 
 These eight lines ARE `sane.bash`. Paste them verbatim at the top of any Bash
-script — this is the inline form used by [`example-inline`](./example-inline)
+script — this is the inline form used by [`example-inline.bash`](./example-inline.bash)
 and [`reference-sane.bash`](./reference-sane.bash):
 
 <!-- markdownlint-disable MD013 -->
@@ -87,7 +87,7 @@ dependency, no extra file. This is the approach `reference-sane.bash` champions.
 ### 2. Source mode (when you vendor `sane.bash`)
 
 Download [`sane.bash`](./sane.bash) next to your script and source it. This is
-the approach used by [`example`](./example):
+the approach used by [`example.bash`](./example.bash):
 
 ```bash
 #!/usr/bin/env bash
@@ -216,7 +216,7 @@ When asked to produce a "safe/sane bash script", follow this order:
 If you are editing files inside `sane.bash` itself:
 
 *   **Validate via `make`, never invoke linters directly.** The repo's
-  [`Makefile`](./Makefile) wires editorconfig-checker, markdownlint, shellcheck,
+  `Makefile` (repo root) wires editorconfig-checker, markdownlint, shellcheck,
   and shfmt into a single entrypoint:
     *   `make check` — lint + format (this is the gate; run it after any edit).
     *   `make test` — tests.
@@ -227,7 +227,7 @@ If you are editing files inside `sane.bash` itself:
     *   [`docs-sane.bash`](./docs-sane.bash) — same code, inline-documented.
     *   [`reference-sane.bash`](./reference-sane.bash) — same code + arg parsing, the
     copy-paste CLI template.
-    *   [`example`](./example) / [`example-inline`](./example-inline) — usage demos
+    *   [`example.bash`](./example.bash) / [`example-inline.bash`](./example-inline.bash) — usage demos
     for the source and inline forms respectively.
 *   Keep the four `.bash` files in sync: a change to the header belongs in all of
   them. The header lines must stay byte-identical (including the
