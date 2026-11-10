@@ -1,0 +1,32 @@
+skills/sane-bash/sane.bash
+  s_cbde8c1620bb25::t_14952689c8511d 1-9
+README.md
+  s_cbde8c1620bb25::t_bc27ad8b78096e 15,18,20
+  s_cbde8c1620bb25::t_c927fef1cfca97 26-27
+skills/sane-bash/docs-sane.bash
+  s_cbde8c1620bb25::t_14952689c8511d 1-25
+skills/sane-bash/SKILL.md
+  s_cbde8c1620bb25::t_239fd24329f097 230
+  s_cbde8c1620bb25::t_52eeb857488356 56,90
+  s_cbde8c1620bb25::t_bc27ad8b78096e 219
+skills/sane-bash/example.bash
+  s_cbde8c1620bb25::t_63c00f74439611 6
+skills/sane-bash/reference-sane.bash
+  s_cbde8c1620bb25::t_14952689c8511d 1-59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a4f019b00f9a3129b0b63a3aaa9ac23be8805dc0",
+  "prompts": {},
+  "sessions": {
+    "s_cbde8c1620bb25": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "89c00936-479d-4456-b5a6-3538f0f85a9e",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Andrei Neculau <andrei.neculau@gmail.com>"
+    }
+  }
+}
