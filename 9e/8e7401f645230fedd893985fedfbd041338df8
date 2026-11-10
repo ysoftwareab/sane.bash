@@ -1,0 +1,23 @@
+skills/sane-bash/example-inline.bash
+  s_cbde8c1620bb25::t_1686d987b1a05b 14,16-17,25-26,28-30,36,43-60,62-64
+  s_cbde8c1620bb25::t_ced32da77f3fe9 15
+skills/sane-bash/example.bash
+  s_cbde8c1620bb25::t_1686d987b1a05b 14,16-17,25-26,28-30,36,43-60,62-64
+  s_cbde8c1620bb25::t_ced32da77f3fe9 15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9e8e7401f645230fedd893985fedfbd041338df8",
+  "prompts": {},
+  "sessions": {
+    "s_cbde8c1620bb25": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "89c00936-479d-4456-b5a6-3538f0f85a9e",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Andrei Neculau <andrei.neculau@gmail.com>"
+    }
+  }
+}
