@@ -1,14 +1,12 @@
 skills/sane-bash/example-inline.bash
-  s_cbde8c1620bb25::t_1686d987b1a05b 14,16-17,25-26,28-30,36,43-60,62-64
-  s_cbde8c1620bb25::t_ced32da77f3fe9 15
+  s_cbde8c1620bb25::t_2eebf45a706199 14-17,25-26,28-30,36,43-60,62-64
 skills/sane-bash/example.bash
-  s_cbde8c1620bb25::t_1686d987b1a05b 14,16-17,25-26,28-30,36,43-60,62-64
-  s_cbde8c1620bb25::t_ced32da77f3fe9 15
+  s_cbde8c1620bb25::t_c78981164d719c 14-17,25-26,28-30,36,43-60,62-64
 ---
 {
   "schema_version": "authorship/3.0.0",
   "git_ai_version": "1.7.5",
-  "base_commit_sha": "9e8e7401f645230fedd893985fedfbd041338df8",
+  "base_commit_sha": "52a712bd3cd8218a5b51c918e8a2368fb91ba45d",
   "prompts": {},
   "sessions": {
     "s_cbde8c1620bb25": {
