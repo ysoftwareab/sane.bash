@@ -11,10 +11,10 @@ function exe() { printf '%s\n' "$(pwd)\$ $(printf '%q ' "$@")" >&2 && "$@"; } &&
 
 # EXAMPLE SCRIPT
 
-exe false || true   # allow non-zero exits
-false || true       # allow non-zero exists (but no stdout output)
-sleep 5             # try pressing CTRL-C
-exe false           # this should fail and be trapped
+exe false || true # allow non-zero exits
+false || true     # allow non-zero exits (but no stdout output)
+sleep 5           # try pressing CTRL-C
+exe false         # this should fail and be trapped
 
 # EXAMPLE SCRIPT OUTPUT
 # editorconfig-checker-disable max-line-length
@@ -22,49 +22,44 @@ exe false           # this should fail and be trapped
 # ## `./example-inline.bash`
 
 # ```text
-# /Users/andrei/git/andreineculau/sane.bash$ false || true
-# /Users/andrei/git/andreineculau/sane.bash$ false
+# /Users/andrei/git/andreineculau/sane.bash/skills/sane-bash$ false
+# /Users/andrei/git/andreineculau/sane.bash/skills/sane-bash$ false
 
-# bash: *** [./example-inline.bash:8 exe] Error 1
-# bash: *** [./example-inline.bash:19 main]
+# bash: *** [command] "$@"
+# bash: *** [./example-inline.bash:7 exe] Error 1
+# bash: *** [./example-inline.bash:17 main]
 # ```
 
 # ## `./example-inline.bash` when interrupting with `CTRL-C`
 
 # ```text
-# /Users/andrei/git/andreineculau/sane.bash$ false || true
+# /Users/andrei/git/andreineculau/sane.bash/skills/sane-bash$ false
 # ^C
 # ```
 
 # ## `SHELLOPTS=xtrace ./example-inline.bash` or `V=1 ./example-inline.bash`
 
 # ```text
-# + set -eEuo pipefail
-# + ((  BASH_VERSINFO[0] < 4 || (BASH_VERSINFO[0] == 4 && BASH_VERSINFO[1] < 4)  ))
-# + shopt -s inherit_errexit
-# + export 'PS4=+(${BASH_SOURCE[0]}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
-# + PS4='+(${BASH_SOURCE[0]}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
-# +(./example-inline.bash:6): trap 'e=$?; set +x; s() { local i=0; while caller $i; do ((++i)); done | while read l f p; do echo "bash: *** [$p:$l $f]${e:+ Error }$e"; e=""; done; }; >&2 echo; >&2 s' ERR
-# +(./example-inline.bash:9): '[' -z '' ']'
-# +(./example-inline.bash:15): exe 'false || true'
-# ++(./example-inline.bash:8): exe(): pwd
-# +(./example-inline.bash:8): exe(): eval '>&2 echo "/Users/andrei/git/andreineculau/sane.bash$ false || true"; false || true'
-# ++(./example-inline.bash:8): exe(): echo '/Users/andrei/git/andreineculau/sane.bash$ false || true'
-# /Users/andrei/git/andreineculau/sane.bash$ false || true
-# ++(./example-inline.bash:8): exe(): false
-# ++(./example-inline.bash:8): exe(): true
-# +(./example-inline.bash:16): false
-# +(./example-inline.bash:16): true
-# +(./example-inline.bash:18): sleep 5
-# +(./example-inline.bash:19): exe false
-# ++(./example-inline.bash:8): exe(): pwd
-# +(./example-inline.bash:8): exe(): eval '>&2 echo "/Users/andrei/git/andreineculau/sane.bash$ false"; false'
-# ++(./example-inline.bash:8): exe(): echo '/Users/andrei/git/andreineculau/sane.bash$ false'
-# /Users/andrei/git/andreineculau/sane.bash$ false
-# ++(./example-inline.bash:8): exe(): false
-# +++(./example-inline.bash:8): exe(): e=1
-# +++(./example-inline.bash:8): exe(): set +x
+# +(./example-inline.bash:14): exe false
+# ++(./example-inline.bash:7): exe(): pwd
+# ++(./example-inline.bash:7): exe(): printf '%q ' false
+# +(./example-inline.bash:7): exe(): printf '%s\n' '/Users/andrei/git/andreineculau/sane.bash/skills/sane-bash$ false '
+# /Users/andrei/git/andreineculau/sane.bash/skills/sane-bash$ false
+# +(./example-inline.bash:7): exe(): false
+# +(./example-inline.bash:14): true
+# +(./example-inline.bash:15): false
+# +(./example-inline.bash:15): true
+# +(./example-inline.bash:16): sleep 5
+# +(./example-inline.bash:17): exe false
+# ++(./example-inline.bash:7): exe(): pwd
+# ++(./example-inline.bash:7): exe(): printf '%q ' false
+# +(./example-inline.bash:7): exe(): printf '%s\n' '/Users/andrei/git/andreineculau/sane.bash/skills/sane-bash$ false '
+# /Users/andrei/git/andreineculau/sane.bash/skills/sane-bash$ false
+# +(./example-inline.bash:7): exe(): false
+# ++(./example-inline.bash:7): exe(): e=1
+# ++(./example-inline.bash:7): exe(): set +x
 
-# bash: *** [./example-inline.bash:8 exe] Error 1
-# bash: *** [./example-inline.bash:19 main]
+# bash: *** [command] "$@"
+# bash: *** [./example-inline.bash:7 exe] Error 1
+# bash: *** [./example-inline.bash:17 main]
 # ```
