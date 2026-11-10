@@ -1,0 +1,14 @@
+package.json
+  h_aad1b8d8fc64af 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e1dd311e3653bf9ac62712d903224fbf4e2df2d0",
+  "prompts": {},
+  "humans": {
+    "h_aad1b8d8fc64af": {
+      "author": "Andrei Neculau <andrei.neculau@gmail.com>"
+    }
+  }
+}
